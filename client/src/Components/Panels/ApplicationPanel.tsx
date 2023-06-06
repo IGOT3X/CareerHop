@@ -1,0 +1,1 @@
+// Application panel will change it's inners based on what the user specifies in the user panel.
