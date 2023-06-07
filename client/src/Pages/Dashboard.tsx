@@ -16,7 +16,9 @@ const Dashboard = () => {
 
     return (
         <>
-            <p>Dashboard</p>
+            <div className="w-screen h-screen">
+                
+            </div>
         </>
     )
 }
