@@ -11,7 +11,7 @@ const Dashboard = () => {
     const navigator = useNavigate();
     const [pageSelected, setPageSelected] = useState("applications");
 
-    const [showAddApplication,setShowAddApplication] = useState(false);
+    const [showAddApplication, setShowAddApplication] = useState(false);
 
 
     useEffect(() => {
@@ -31,12 +31,20 @@ const Dashboard = () => {
                                 <img src="search.svg" className="w-[24px] h-[24px]" alt="" />
                                 <input className="h-[48px] bg-transparent outline-none text-black-200" placeholder="Search" type="text" name="" id="" />
                             </div>
-                            <button onClick={()=>setShowAddApplication(true)} className="group self-end relative">
+                            <button onClick={() => setShowAddApplication(true)} className="group self-end relative">
                                 <div className={`h-[48px] flex gap-[8px] items-center px-[24px] border-2 border-black-500 text-black-300 rounded-[8px] opacity-100 group-hover:opacity-0 transition ease-out duration-700 absolute`}><img src="plus-circle.svg" alt="" /><p>Add an application</p></div>
                                 <div className={`h-[48px] flex gap-[8px] items-center px-[24px] rounded-gradient text-green rounded-[8px] opacity-0 group-hover:opacity-100 transition ease-out duration-700 `}><img src="plus-circle-gradient.svg" alt="" /><p>Add an application</p></div>
                             </button>
-                        </div>
 
+                        </div>
+                        {showAddApplication &&
+                            <div className="fixed z-50 h-[80%] w-[70%] top-[50%] left-[50%] translate-x-[-36%] translate-y-[-50%] glass rounded-[20px] fade-in-fast flex flex-col items-center px-[16px] py-[32px]">
+                                <h1 className="gradient-1 text-[36px] ">Add a new application</h1>
+                                <button onClick={()=>setShowAddApplication(false)} className="absolute right-10 top-[45px]">
+                                    <img src="exit.svg" alt="" />
+                                </button>
+                            </div>
+                        }
                     </div>
                     {
                         pageSelected == "applications" &&
