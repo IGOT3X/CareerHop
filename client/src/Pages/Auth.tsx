@@ -15,8 +15,8 @@ const Auth = () => {
     }, []);
     return (
         <>
-            <div className="flex items-center justify-center w-screen h-screen gap-[15px]">
-                <div className="w-[500px] h-[571px] bg-black-600 rounded-[20px] px-[60px] py-[25px] flex flex-col justify-between">
+            <div className="flex sm:flex-row flex-col items-center justify-center w-screen  sm:h-screen gap-[15px]">
+                <div className="sm:w-[500px] w-[90%] sm:mt-0 mt-10 h-[571px] bg-black-600 rounded-[20px] px-[60px] py-[25px] flex flex-col justify-between">
                     <div className="flex flex-col gap-[14px]">
                         <h1 className="text-[32px] gradient-1">{authMode=="login"?"LogIn":"Register"}</h1>
                         <p className="text-black-400 font-medium">In order to use "CareerHop" you need to sign in. </p>
@@ -28,8 +28,8 @@ const Auth = () => {
                     </div>
 
                 </div>
-                <div className="flex flex-col gap-[15px]">
-                    <div className="w-[286px] h-[354px] bg-black-600 rounded-[20px] flex flex-col gap-[27px] py-[25px] px-[17px] text-black-400">
+                <div className="flex flex-col gap-[15px] sm:w-[286px] w-[90%] mb-10 sm:mb-0">
+                    <div className="sm:w-[286px]  h-[354px] bg-black-600 rounded-[20px] flex flex-col gap-[27px] py-[25px] px-[17px] text-black-400">
                         <h1 className="text-black-200 text-[24px] self-center">Features?</h1>
                         <div className="flex flex-col gap-[13px]">
                             <div className="flex gap-[13px]">
@@ -58,7 +58,7 @@ const Auth = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-[286px] h-[202px] bg-black-600 rounded-[20px] flex flex-col gap-[27px] py-[25px] px-[17px] text-black-400">
+                    <div className="sm:w-[286px] w-[100%] h-[202px] bg-black-600 rounded-[20px] flex flex-col gap-[27px] py-[25px] px-[17px] text-black-400">
                         <h1 className="text-black-200 text-[24px] self-center">{authMode=="login" ? "No account?" : "Have an account?"}</h1>
                         <button onClick={()=>authMode=="login"?setAuthMode("register"):setAuthMode("login")} className="group flex items-center justify-center relative">
                             <div className="h-[48px] flex items-center px-[24px] py-[8px] border border-black-500 text-black-400 rounded-[8px] opacity-100 group-hover:opacity-0 transition ease-out duration-700 absolute">{authMode=="login" ? "Register" : "LogIn"}</div>

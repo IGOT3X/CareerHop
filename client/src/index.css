@@ -21,9 +21,15 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+.gradient-2 {
+  background: linear-gradient(135deg, #96DFB3 0%, #9F99DF 50%, #DF96CF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
 
 .rounded-gradient{
-    height: 48px;
     border: double 2px transparent;
     border-radius: 8px;
     background-image: linear-gradient(#1A1D21,#1A1D21), linear-gradient(90deg, rgba(213,223,150,1) 0%, rgba(155,223,153,1) 50%, rgba(150,214,223,1) 100%);
@@ -31,10 +37,38 @@
     background-clip: padding-box, border-box;
 }
 .rounded-gradient-2{
-  height: 48px;
   border: double 2px transparent;
-  border-radius: 8px;
+  border-radius: 12px;
   background-image: linear-gradient(#1A1D21,#1A1D21), linear-gradient(90deg, #96DFB3 0%, #9F99DF 50%, #DF96CF 100%);
   background-origin: border-box;
   background-clip: padding-box, border-box;
+}
+
+
+.slide-in {
+  animation: slide-in 2s forwards;
+}
+
+.fade-in{
+  animation: fade-in 2s forwards;
+
+}
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

@@ -24,8 +24,10 @@ const Authentication = ({ authMode }: { authMode: string }) => {
             setButtonState("");
             if (response.status == 400) return alert("Server error, could not log in...");
             if (response.status == 301) return alert("Account with given credentials does not exist!");
+            if (response.status == 302) return alert("Email not valid!");
 
             Cookies.set("seshID", response.seshID,{expires:30});
+            Cookies.set("email", emailRef.current!.value,{expires:30});
             setButtonState("confirmed");
             setTimeout(() => {
                 navigator("/");
@@ -40,8 +42,13 @@ const Authentication = ({ authMode }: { authMode: string }) => {
         SendPost("register", { email: emailRegisterRef.current?.value, password: passwordRegisterRef.current?.value }).then(response => {
             setButtonState("");
             if (response.status == 400) return alert("Server error, could not register...");
+            if (response.status == 302) return alert("Email not valid!");
+            if (response.status == 303) return alert("Password must have at least one special character, be at least 8 characters long, have one uppercase and one lowercase letter and have at least one digit!");
+
+            // MOVE THAT TO A FILE?
 
             Cookies.set("seshID", response.seshID,{expires:30});
+            Cookies.set("email", emailRegisterRef.current!.value,{expires:30});
             setButtonState("confirmed");
             setTimeout(() => {
                 navigator("/");
@@ -58,17 +65,17 @@ const Authentication = ({ authMode }: { authMode: string }) => {
                         <p className="text-black-400 font-medium">
                             Email
                         </p>
-                        <input className="px-[16px] bg-transparent border border-black-500 rounded-[8px] text-black-300 h-[48px] placeholder-black-500 outline-black-600 focus:appearance-none" placeholder="example@mail.com" type="text" ref={emailRef} />
+                        <input className="px-[16px] bg-transparent border border-black-500 rounded-[8px] text-black-300 h-[48px] placeholder-black-500 outline-black-600 focus:appearance-none" placeholder="example@mail.com" type="text" name="email" ref={emailRef} />
                     </div>
                     <div className="flex flex-col gap-[16px]">
                         <p className="text-black-400 font-medium">
                             Password
                         </p>
-                        <input className="px-[16px] bg-transparent border border-black-500 rounded-[8px] text-black-300 h-[48px] placeholder-black-500 outline-black-600 focus:appearance-none" placeholder="***********" type="password" ref={passwordRef} />
+                        <input className="px-[16px] bg-transparent border border-black-500 rounded-[8px] text-black-300 h-[48px] placeholder-black-500 outline-black-600 focus:appearance-none" placeholder="***********" type="password" name="password" ref={passwordRef} />
                     </div>
                     <button onClick={RequestLogin} className="group self-end relative">
-                        <div className={`h-[48px] flex gap-[8px] items-center px-[24px] py-[8px] rounded-gradient text-green rounded-[8px] opacity-100 group-hover:opacity-0 transition ease-out duration-700 absolute ${buttonState == "confirmed" && "animate-pulse"}`}><p>{buttonState == "loading" ? "Please wait" : buttonState == "confirmed" ? "Welcome" : "Log In"}</p> {buttonState == "loading" ? <img className="w-[24px] h-[24px] animate-spin" src="loader.svg" /> : buttonState == "confirmed" ? <img className="w-[24px] h-[24px]" src="check.svg" /> : null}</div>
-                        <div className="h-[48px] flex gap-[8px] items-center px-[24px] py-[8px] rounded-gradient-2 text-green rounded-[8px] opacity-0 group-hover:opacity-100 transition ease-out duration-700"><p>{buttonState == "loading" ? "Please wait" : buttonState == "confirmed" ? "Welcome" : "Log In"}</p>{buttonState == "loading" ? <img className="w-[24px] h-[24px] animate-spin" src="loader.svg" /> : buttonState == "confirmed" ? <img className="w-[24px] h-[24px]" src="check.svg" /> : null}</div>
+                        <div className={`h-[48px] flex gap-[8px] items-center px-[24px] rounded-gradient text-green rounded-[8px] opacity-100 group-hover:opacity-0 transition ease-out duration-700 absolute ${(buttonState == "confirmed" || buttonState=="loading") && "animate-pulse"}`}><p>{buttonState == "loading" ? "Please wait" : buttonState == "confirmed" ? "Welcome" : "Log In"}</p> {buttonState == "loading" ? <img className="w-[24px] h-[24px] animate-spin" src="loader.svg" /> : buttonState == "confirmed" ? <img className="w-[24px] h-[24px]" src="check.svg" /> : null}</div>
+                        <div className={`h-[48px] flex gap-[8px] items-center px-[24px] rounded-gradient-2 text-green rounded-[8px] opacity-0 group-hover:opacity-100 transition ease-out duration-700 ${(buttonState == "confirmed" || buttonState=="loading") && "animate-pulse"}`}><p>{buttonState == "loading" ? "Please wait" : buttonState == "confirmed" ? "Welcome" : "Log In"}</p>{buttonState == "loading" ? <img className="w-[24px] h-[24px] animate-spin" src="loader.svg" /> : buttonState == "confirmed" ? <img className="w-[24px] h-[24px]" src="check.svg" /> : null}</div>
                     </button>
                 </div>
             }
@@ -79,13 +86,13 @@ const Authentication = ({ authMode }: { authMode: string }) => {
                         <p className="text-black-400 font-medium">
                             Email
                         </p>
-                        <input className="px-[16px] bg-transparent border border-black-500 rounded-[8px] text-black-300 h-[48px] placeholder-black-500 outline-black-600 focus:appearance-none" placeholder="example@mail.com" type="text" ref={emailRegisterRef} />
+                        <input className="px-[16px] bg-transparent border border-black-500 rounded-[8px] text-black-300 h-[48px] placeholder-black-500 outline-black-600 focus:appearance-none" placeholder="example@mail.com" type="text" name="email" ref={emailRegisterRef} />
                     </div>
                     <div className="flex flex-col gap-[16px]">
                         <p className="text-black-400 font-medium">
                             Password
                         </p>
-                        <input className="px-[16px] bg-transparent border border-black-500 rounded-[8px] text-black-300 h-[48px] placeholder-black-500 outline-black-600 focus:appearance-none" placeholder="***********" type="password" ref={passwordRegisterRef} />
+                        <input className="px-[16px] bg-transparent border border-black-500 rounded-[8px] text-black-300 h-[48px] placeholder-black-500 outline-black-600 focus:appearance-none" placeholder="***********" type="password" name="password" ref={passwordRegisterRef} />
                     </div>
                     <div className="flex flex-col gap-[16px]">
                         <p className="text-black-400 font-medium">
@@ -94,8 +101,8 @@ const Authentication = ({ authMode }: { authMode: string }) => {
                         <input className="px-[16px] bg-transparent border border-black-500 rounded-[8px] text-black-300 h-[48px] placeholder-black-500 outline-black-600 focus:appearance-none" placeholder="***********" type="password" ref={passwordConfirmationRegisterRef} />
                     </div>
                     <button onClick={RequestRegistration} className="group self-end relative">
-                        <div className="h-[48px] flex items-center px-[24px] py-[8px] rounded-gradient text-green rounded-[8px] opacity-100 group-hover:opacity-0 transition ease-out duration-700 absolute">Register</div>
-                        <div className="h-[48px] flex items-center px-[24px] py-[8px] rounded-gradient-2 text-green rounded-[8px] opacity-0 group-hover:opacity-100 transition ease-out duration-700">Register</div>
+                        <div className={`h-[48px] flex items-center px-[24px] py-[8px] rounded-gradient text-green rounded-[8px] opacity-100 group-hover:opacity-0 transition ease-out duration-700 absolute ${(buttonState == "confirmed" || buttonState=="loading") && "animate-pulse"}`}>Register</div>
+                        <div className={`h-[48px] flex items-center px-[24px] py-[8px] rounded-gradient-2 text-green rounded-[8px] opacity-0 group-hover:opacity-100 transition ease-out duration-700 ${(buttonState == "confirmed" || buttonState=="loading") && "animate-pulse"}`}>Register</div>
                     </button>
                 </div>
             }
