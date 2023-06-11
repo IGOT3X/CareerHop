@@ -11,7 +11,8 @@ module.exports = {
       'black-300':"#9B9C9E",
       'black-500':"#363A3D",
 
-      'green':"#B6F09C"
+      'green':"#B6F09C",
+      red:"#E42C2C"
     },
     extend: {
         group: ['hover', 'focus'], // Uncomment and add 'group' to the array

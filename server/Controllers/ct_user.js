@@ -5,7 +5,7 @@ const VerifyEmailInput = (email)=>{
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
-const VerifyPasswordStrength = () =>{
+const VerifyPasswordStrength = (password) =>{
   if (password.length < 8) {
     return false;
   }

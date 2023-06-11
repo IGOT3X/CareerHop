@@ -13,7 +13,9 @@
 .background {
   background: linear-gradient(180deg, #16191B 0%, #0D0F10 100%);
 }
-
+.linear-black{
+  background: linear-gradient(102.05deg, #14161A 0%, #1A1D21 100%);
+}
 .gradient-1 {
   background: rgb(213, 223, 150);
   background: linear-gradient(90deg, rgba(213, 223, 150, 1) 0%, rgba(155, 223, 153, 1) 50%, rgba(150, 214, 223, 1) 100%);

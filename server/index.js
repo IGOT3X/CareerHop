@@ -15,13 +15,19 @@ mongoose.connect('mongodb://localhost:27017/careerhop', {
 
 
 const userController = require("./Controllers/ct_user");
+const applicationController = require("./Controllers/ct_application");
 
 /* USER */
 app.get("/api/login",userController.Login);
-
-
 app.post("/api/register",userController.Register);
 
+/* APPLICATIONS */
+app.get("/api/get-applications",applicationController.GetApplications);
+app.get("/api/get-notes",applicationController.GetNotes);
+app.post("/api/archive-application",applicationController.ArchiveApplication);
+app.post("/api/add-application",applicationController.AddApplication);
+app.post("/api/update-reply",applicationController.UpdateReply);
+app.post("/api/add-note",applicationController.AddNote);
 
 
 app.listen(1313,()=>{
