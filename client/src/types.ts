@@ -17,6 +17,7 @@ export type TApplication = {
         description: string
     }],
     coverLetter: string,
+    archived:boolean,
 }
 
 export type TNote = {

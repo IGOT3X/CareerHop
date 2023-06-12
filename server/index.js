@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require('cors');
+const https = require("https");
+
 
 const app = express();
 app.use(express.json());
@@ -18,18 +20,19 @@ const userController = require("./Controllers/ct_user");
 const applicationController = require("./Controllers/ct_application");
 
 /* USER */
-app.get("/api/login",userController.Login);
-app.post("/api/register",userController.Register);
+app.get("/api/login", userController.Login);
+app.post("/api/register", userController.Register);
 
 /* APPLICATIONS */
-app.get("/api/get-applications",applicationController.GetApplications);
-app.get("/api/get-notes",applicationController.GetNotes);
-app.post("/api/archive-application",applicationController.ArchiveApplication);
-app.post("/api/add-application",applicationController.AddApplication);
-app.post("/api/update-reply",applicationController.UpdateReply);
-app.post("/api/add-note",applicationController.AddNote);
+app.get("/api/get-applications", applicationController.GetApplications);
+app.get("/api/get-notes", applicationController.GetNotes);
+app.post("/api/archive-application", applicationController.ArchiveApplication);
+app.post("/api/add-application", applicationController.AddApplication);
+app.post("/api/update-reply", applicationController.UpdateReply);
+app.post("/api/add-note", applicationController.AddNote);
+app.post("/api/add-interview", applicationController.AddInterview);
 
 
-app.listen(1313,()=>{
-    console.log("[G] CareerHop server side is online...")
+app.listen(1313, () => {
+  console.log("[G] CareerHop server side is online...")
 });

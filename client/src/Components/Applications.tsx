@@ -33,7 +33,7 @@ const Applications = ({archive}:{archive:boolean}) => {
                 <div className="flex gap-[8px] flex-wrap">
                 {
                     applications?.map(application => (
-                        <JobCard RefreshApplications={RefreshApplications} _id={application._id} company={application.company} jobTitle={application.jobTitle} expiry={application.expiry} requirements={application.requirements} reply={application.reply} applicationLink={application.applicationLink} />
+                        <JobCard RefreshApplications={RefreshApplications} archived={application.archived} _id={application._id} company={application.company} jobTitle={application.jobTitle} expiry={application.expiry} requirements={application.requirements} reply={application.reply} applicationLink={application.applicationLink} interviewDateTime={application.interviewDate} />
                     ))
                 }
                 </div>

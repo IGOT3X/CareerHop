@@ -39,7 +39,7 @@ const UserPanel = ({SetState} : {SetState:Function}) => {
                             <p className="">Jobs applied to</p>
                         </div>
                     </button>
-                    <button onClick={()=>setPageSelected("interviews")} className="group flex items-center justify-center relative">
+{/*                     <button onClick={()=>setPageSelected("interviews")} className="group flex items-center justify-center relative">
                         {pageSelected != "interviews" &&
                             <div className="h-[48px] w-[204px] flex items-center gap-[8px] px-[24px] py-[8px] border-2 border-black-500 text-black-300 rounded-[8px] opacity-100 group-hover:opacity-0 transition ease-out duration-700 absolute">
 
@@ -51,7 +51,7 @@ const UserPanel = ({SetState} : {SetState:Function}) => {
                             <img src="microphone.svg" alt="" />
                             <p className="">Interviews</p>
                         </div>
-                    </button>
+                    </button> */}
                     <button onClick={()=>setPageSelected("archive")} className="group flex items-center justify-center relative">
                         {pageSelected != "archive" &&
                             <div className="h-[48px] w-[204px] flex items-center gap-[8px] px-[24px] py-[8px] border-2 border-black-500 text-black-300 rounded-[8px] opacity-100 group-hover:opacity-0 transition ease-out duration-700 absolute">
@@ -65,7 +65,7 @@ const UserPanel = ({SetState} : {SetState:Function}) => {
                             <p className="">Archive</p>
                         </div>
                     </button>
-                    <button onClick={()=>setPageSelected("reminders")} className="group flex items-center justify-center relative">
+                    {/* <button onClick={()=>setPageSelected("reminders")} className="group flex items-center justify-center relative">
                         {pageSelected != "reminders" &&
                             <div className="h-[48px] w-[204px] flex items-center gap-[8px] px-[24px] py-[8px] border-2 border-black-500 text-black-300 rounded-[8px] opacity-100 group-hover:opacity-0 transition ease-out duration-700 absolute">
 
@@ -77,7 +77,7 @@ const UserPanel = ({SetState} : {SetState:Function}) => {
                             <img src="bulb.svg" alt="" />
                             <p className="">Reminders</p>
                         </div>
-                    </button>
+                    </button> */}
                     <div className="flex flex-grow"></div>
                     <button onClick={LogOut} className="flex items-center gap-[8px] self-center">
                         <img className="w-[24px] h-[24px]" src="log-out.svg" alt="" />

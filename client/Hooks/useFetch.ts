@@ -1,6 +1,6 @@
 const DEBUG = true;
 
-let API_LINK = "https://careerhop/api/";
+let API_LINK = "https://1/api/";
 
 if (DEBUG) API_LINK = "http://192.168.100.201:1313/api/"
 

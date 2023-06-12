@@ -22,6 +22,7 @@ const Auth = () => {
                         <p className="text-black-400 font-medium">In order to use "CareerHop" you need to sign in. </p>
                     </div>
                         <Authentication authMode={authMode}/>
+                        <button onClick={()=>authMode=="login"?setAuthMode("register"):setAuthMode("login")} className="sm:hidden flex self-start text-black-400 underline">{authMode=="login" ? "Register" : "LogIn"}</button>
                     <div className="flex gap-[8px] self-center text-black-400">
                         <p className="font-medium">Created by: Luka Igrutinović</p>
                         <a href="https://www.github.com/igot3x" target="_blank"><img className="w-[24px] h-[24px] transition ease-in-out duration-700 hover:scale-105" src="github.svg" alt="" /></a>
@@ -58,7 +59,7 @@ const Auth = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="sm:w-[286px] w-[100%] h-[202px] bg-black-600 rounded-[20px] flex flex-col gap-[27px] py-[25px] px-[17px] text-black-400">
+                    <div className="hidden sm:w-[286px] w-[100%] h-[202px] bg-black-600 rounded-[20px] sm:flex flex-col gap-[27px] py-[25px] px-[17px] text-black-400">
                         <h1 className="text-black-200 text-[24px] self-center">{authMode=="login" ? "No account?" : "Have an account?"}</h1>
                         <button onClick={()=>authMode=="login"?setAuthMode("register"):setAuthMode("login")} className="group flex items-center justify-center relative">
                             <div className="h-[48px] flex items-center px-[24px] py-[8px] border border-black-500 text-black-400 rounded-[8px] opacity-100 group-hover:opacity-0 transition ease-out duration-700 absolute">{authMode=="login" ? "Register" : "LogIn"}</div>

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { SendGet, SendPost } from "../../../Hooks/useFetch";
 import { TNote } from "../../types";
+import NoteCard from "../Cards/NoteCard";
 
 const Notes = ({ setShowNotes,company,_id }: { setShowNotes: Function,company:string,_id:string }) => {
 
@@ -42,7 +43,7 @@ const Notes = ({ setShowNotes,company,_id }: { setShowNotes: Function,company:st
         <>
             {
                 !browseMode &&
-                <div className="fixed z-50 h-[80%] w-[70%] top-[50%] left-[50%] translate-x-[-36%] translate-y-[-50%] glass rounded-[20px] flex flex-col items-center px-[16px] py-[32px]">
+                <div className="fixed z-50 w-full h-full inset-0 glass rounded-[20px] fade-in-fast flex flex-col items-center px-[16px] py-[32px]">
                     <h1 className="gradient-1 text-[36px] ">Add a new note</h1>
                     <button onClick={() => setShowNotes(false)} className="absolute right-10 top-[45px]">
                         <img src="exit.svg" alt="" />
@@ -68,7 +69,7 @@ const Notes = ({ setShowNotes,company,_id }: { setShowNotes: Function,company:st
             }
             {
                 browseMode&&
-                <div className="fixed z-50 h-[80%] w-[70%] top-[50%] left-[50%] translate-x-[-36%] translate-y-[-50%] glass rounded-[20px] fade-in-fast flex flex-col items-center px-[16px] py-[32px]">
+                <div className="fixed z-50 w-full h-full inset-0 glass rounded-[20px] fade-in-fast flex flex-col items-center px-[16px] py-[32px]">
                     <div className="flex flex-col items-center">
                         <h1 className="gradient-1 text-[36px] ">Notes</h1>
                         <p className="text-black-300">{company}</p>
@@ -83,10 +84,10 @@ const Notes = ({ setShowNotes,company,_id }: { setShowNotes: Function,company:st
                         <div className={`h-[48px] w-full flex items-center justify-center px-[24px] py-[8px] rounded-gradient text-green rounded-[8px] opacity-0 group-hover:opacity-100 transition ease-out duration-700`}><p>Add a note</p></div>
                     </button>
 
-                    <div className="flex flex-wrap gap-[8px]">
+                    <div className="flex flex-wrap gap-[8px] mt-[32px] justify-center">
                         {
                             notes.map(note=>(
-                                <div className="">{note.title}</div>
+                                <NoteCard title={note.title} note={note.note} _id={note._id}/>
                             ))
                         }
                     </div>

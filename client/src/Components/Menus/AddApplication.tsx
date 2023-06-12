@@ -33,7 +33,7 @@ const AddApplication = ({ setShowAddApplication }: { setShowAddApplication: Func
     }
     return (
         <>
-            <div className="fixed z-50 h-[80%] w-[70%] top-[50%] left-[50%] translate-x-[-36%] translate-y-[-50%] glass rounded-[20px] fade-in-fast flex flex-col items-center px-[16px] py-[32px]">
+            <div className="fixed z-50 w-full h-full inset-0 glass rounded-[20px] fade-in-fast flex flex-col items-center px-[16px] py-[32px]">
                 <h1 className="gradient-1 text-[36px] ">Add a new application</h1>
                 <button onClick={() => setShowAddApplication(false)} className="absolute right-10 top-[45px]">
                     <img src="exit.svg" alt="" />

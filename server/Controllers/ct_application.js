@@ -78,11 +78,22 @@ const AddNote = async(req,res)=>{
     }
 }
 
+const AddInterview = async(req,res)=>{
+    try {
+        const result = await applicationModel.updateOne({_id:req.body.jobID},{$set:{interviewDate:req.body.dateTime,reply:"interview"}}).exec();
+
+        return res.json({status:200});
+    } catch (error) {
+        return res.json({status:400});
+    }
+}
+
 module.exports = {
     AddApplication,
     GetApplications,
     ArchiveApplication,
     UpdateReply,
     GetNotes,
-    AddNote
+    AddNote,
+    AddInterview
 }
