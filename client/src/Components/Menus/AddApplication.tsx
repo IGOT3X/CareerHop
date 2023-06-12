@@ -27,6 +27,7 @@ const AddApplication = ({ setShowAddApplication }: { setShowAddApplication: Func
             setButtonState("confirmed");
             setTimeout(() => {
                 setShowAddApplication(false);
+                location.reload();
             }, 1000);
 
         })
